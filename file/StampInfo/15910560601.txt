@@ -1,0 +1,2 @@
+Your stamp number is increased by one after payment. Now you have 1 stamps
+

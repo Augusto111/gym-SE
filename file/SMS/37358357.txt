@@ -1,0 +1,2 @@
+Member registration is successful!
+ Your member ID is: 37358357
