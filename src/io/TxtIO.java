@@ -39,8 +39,8 @@ public class TxtIO {
         }
         return null;
     }
-    
 
+    ArrayList<String> lines = new ArrayList<String>();
     /**使用FileOutputStream来写入txt文件
      * @param txtPath txt文件路径
      * @param content 需要写入的文本
