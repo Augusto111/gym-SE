@@ -1,5 +1,4 @@
 package gui;
-import io.FileDB;
 
 import javax.swing.*;
 import java.awt.*;

@@ -12,28 +12,64 @@ public class User implements Serializable {
 	 */
 	private static final long serialVersionUID = -5075336075423229986L;
     private String userid;
-	private String username;
-    private String email, telephone;
-    private boolean isPM;
+    private String firstname;
+	private String lastname;
+    private String sex;
+    private Integer age;
+    private String interested;
+    private String password;
+    private String telephone;
+    private Integer cardType;
+    private Integer courseBalance;
+    private Integer type;
+    private Integer balance;
 
     public String getUserid() {
         return userid;
     }
 
-    public String getUsername() {
-        return username;
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public String getEmail() {
-        return email;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getInterested() {
+        return interested;
+    }
+
+    public void setInterested(String interested) {
+        this.interested = interested;
     }
 
     public String getTelephone() {
@@ -44,30 +80,61 @@ public class User implements Serializable {
         this.telephone = telephone;
     }
 
-    public boolean isPM() {
-        return isPM;
+    public Integer getCardType() {
+        return cardType;
     }
 
-    public void setPM(boolean isPM) {
-        this.isPM = isPM;
+    public void setCardType(Integer cardType) {
+        this.cardType = cardType;
     }
 
-
-    public User(String id, String username, String email, String telephone, boolean isPM, int virtualStamps) {
-        this.userid = id;
-        this.username = username;
-        this.email = email;
-        this.telephone = telephone;
-        this.isPM = isPM;
+    public Integer getCourseBalance() {
+        return courseBalance;
     }
+
+    public void setCourseBalance(Integer courseBalance) {
+        this.courseBalance = courseBalance;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
+
+    public Integer getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Integer balance) {
+        this.balance = balance;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "userid='" + userid + '\'' +
-                "username='" + username + '\'' +
-                ", email='" + email + '\'' +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", sex='" + sex + '\'' +
+                ", age=" + age +
+                ", interested='" + interested + '\'' +
+                ", password='" + password + '\'' +
                 ", telephone='" + telephone + '\'' +
-                ", isPM=" + isPM +
+                ", cardType=" + cardType +
+                ", courseBalance=" + courseBalance +
+                ", type=" + type +
+                ", balance=" + balance +
                 '}';
     }
 }
