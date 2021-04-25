@@ -32,6 +32,7 @@ public class TxtIO {
                 while((text = bufferedReader.readLine()) != null){
                     lines.add(text);
                 }
+                bufferedReader.close();
                 return lines;
             } catch (Exception e) {
                 e.printStackTrace();

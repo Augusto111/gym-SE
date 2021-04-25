@@ -83,25 +83,42 @@ public class CourseOperate {
      * 修改课程详细信息
      * @param trainerName 教练名
      * @param videoName 修改之前的视频课程名
-     * @param videoCourse 视频课程信息
+     * @param video 视频课程信息
      * @return err = 0 修改成功；err = 1 修改失败；
      */
-    public int editCourseVideo(String trainerName, String videoName, videoCourse videoCourse){
+    public int editCourseVideo(String trainerName, String videoName, videoCourse video){
         int err = 0;
         String trainerPath = trainerCoursePath + trainerName + ".txt";
         String coursePath = videoCoursePath + trainerName + "_" + videoName + ".txt";
         ArrayList<String> courseList = new ArrayList<String>();
         courseList = txtIO.readTxt(trainerPath);
         for(int i = 0;i < courseList.size();i++){
-            if(videoName == courseList.get(i)){
+            if(videoName.equals(courseList.get(i))){
                 courseList.remove(i);
             }
+        }
+        File trainerFile = new File(trainerPath);
+        if(trainerFile.exists() && trainerFile.isFile()){
+            trainerFile.delete();
+        }
+        if(courseList.size()!=0){
+            String newline = listtoString(courseList);
+            txtIO.writeTxt(trainerPath, newline);
         }
         File file = new File(coursePath);
         if(file.exists() && file.isFile()){
             file.delete();
         }
-        err = addCourseVideo(trainerName, videoCourse);
+        err = addCourseVideo(trainerName, video);
         return err;
+    }
+
+    private String listtoString(ArrayList<String> list){
+        String result = "";
+        for(int i = 0;i<(list.size() - 1);i++){
+            result = result + list.get(i) + "\n";
+        }
+        result = result + list.get(list.size()-1);
+        return result;
     }
 }
