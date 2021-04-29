@@ -67,7 +67,7 @@ public class UserController {
      * @param cardtype 0: 月卡 1: 季卡 2: 年卡
      * @return
      */
-    public Integer modifyUserCourseBalace(String userid,Integer cardtype){
+    public Integer modifyUserCourseBalance(String userid,Integer cardtype){
         String filePath=(Constant.FilePath+"/users/"+userid+".txt");
         try {
             User user=UserFileDB.readUserTxt(filePath);
@@ -94,7 +94,91 @@ public class UserController {
         }
     }
 
+    /**
+     * @Description:
+     * @Param: [courseNum, userId]
+     * @return: java.lang.Integer 课程余量 -1未找到该用户 -3io操作出错 -2访客无权限
+     * @Author: YuBen
+     * @Date: 2021-04-26
+     */
+    public Integer purchaseCourse(Integer courseNum, String userId){
+        String filePath = (Constant.FilePath+"/users/"+userId+".txt");
+        try {
+            User user = UserFileDB.readUserTxt(filePath);
+            if(user == null) {
+                return -1;}
+            else if(user.getType()==0){
+                return  -2;
+            }
+            else{
+                Integer courseBalance = user.getCourseBalance();
+                courseBalance += courseNum;
+                user.setCourseBalance(courseBalance);
+                user.setType(2);
+            }
+            try {
+                UserFileDB.delete(filePath);
+            }catch (Exception e){
+                return -3;
+            }
+            String userDetailString=UserFileDB.userDetailString(user.getUserid(),user.getFirstname(),user.getLastname(),user.getSex(),user.getAge(),user.getInterested(),user.getPassword(),user.getTelephone(),user.getCardType(),user.getCourseBalance(),user.getType(),user.getBalance());
+            try {
+                TxtIO.writeTxt(filePath,userDetailString);
+                return user.getCourseBalance();
+            }catch (Exception e){
+                return -3;
+            }
+        }catch (Exception e){
+            return -3;
+        }
+    }
 
+    /**
+     * @Description:
+     * @Param: [userId]
+     * @return: bean.User:wq
+     *:q::qq
+     *
+     * @Author: YuBen
+     * @Date: 2021-04-26
+     */
+    public User getUserInfo(String userId){
+        String filePath = (Constant.FilePath+"/users/"+userId+".txt");
+        try {
+            User user = UserFileDB.readUserTxt(filePath);
+            if(user == null){
+                return  new User();
+            }
+            else {
+                return user;
+            }
+        }catch (Exception exception){
+            return new User();
+        }
+    }
+
+    /**
+     * @Description:
+     * @Param: [user]
+     * @return: java.lang.Boolean
+     * @Author: YuBen
+     * @Date: 2021-04-26
+     */
+    public Boolean setUserInfo(User user){
+        String filePath = (Constant.FilePath+"/users/"+user.getUserid()+".txt");
+        try {
+            UserFileDB.delete(filePath);
+        }catch (Exception e){
+            return false;
+        }
+        String userDetailString=UserFileDB.userDetailString(user.getUserid(),user.getFirstname(),user.getLastname(),user.getSex(),user.getAge(),user.getInterested(),user.getPassword(),user.getTelephone(),user.getCardType(),user.getCourseBalance(),user.getType(),user.getBalance());
+        try {
+            TxtIO.writeTxt(filePath,userDetailString);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
 //    public static void main(String[] args) {
 //
 //    }
