@@ -1,5 +1,8 @@
 package gui;
 
+import bean.User;
+import controller.UserController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -16,10 +19,12 @@ public class P1 extends TRMain {
     private JButton ThirdButton;
     private JButton FourthButton;
 
+    final static UserController userController = new UserController();
 
-    public P1(String name) {
+    public P1(String name,String userid) {
         super(name);
 
+        User user = userController.getUserInfo(userid);
         addOnss = new int[4];
 
         centerPanel.setLayout(new GridLayout(2, 1));
@@ -43,7 +48,7 @@ public class P1 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new P2("");//改成P2
+                new P2(user.getFirstname(),userid);//改成P2
             }
         });
         SecondButton.setText("PT2");
@@ -51,7 +56,7 @@ public class P1 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new P2("");//看课页面
+                new P2(user.getFirstname(),userid);//课程页面
             }
         });
         ThirdButton.setText("PT3");
@@ -59,7 +64,7 @@ public class P1 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new P2("");
+                new P2(user.getFirstname(),userid);
             }
         });
         FourthButton.setText("PT4");
@@ -67,7 +72,7 @@ public class P1 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new P2("");
+                new P2("",userid);
             }
         });
 
@@ -76,7 +81,7 @@ public class P1 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C4("Welcome XXX");
+                new C4("Welcome " + user.getFirstname(), userid);
             }
         });
 

@@ -17,7 +17,7 @@ public class C5 extends TRMain {
     private JButton FourthButton;
 
 
-    public C5(String name) {
+    public C5(String name, String userid) {
         super(name);
 
         addOnss = new int[4];
@@ -43,7 +43,7 @@ public class C5 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C6("course aaa");//看瑜伽课页面
+                new C6("course aaa",userid);//看瑜伽课页面
             }
         });
         SecondButton.setText("Fat Reduece");
@@ -51,7 +51,7 @@ public class C5 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C6("course aaa");//看瑜伽课页面
+                new C6("course aaa",userid);//看瑜伽课页面
             }
         });
         ThirdButton.setText("。。。。。。");
@@ -59,7 +59,7 @@ public class C5 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C6("course aaa");//看瑜伽课页面
+                new C6("course aaa",userid);//看瑜伽课页面
             }
         });
         FourthButton.setText("。。。。。。");
@@ -67,7 +67,7 @@ public class C5 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C6("course aaa");//看瑜伽课页面
+                new C6("course aaa",userid);//看瑜伽课页面
             }
         });
 
@@ -76,7 +76,7 @@ public class C5 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C4("Welcome XXX");
+                new C4("Welcome XXX",userid);
             }
         });
 

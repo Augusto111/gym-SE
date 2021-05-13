@@ -1,0 +1,14 @@
+userid:1234567
+firstname:Muyan
+lastname:Feng
+sex:female
+age:20
+interested:Yoga;Shaping;
+password:15910560601
+telephone:15910560601
+cardType:-1
+courseBalance:-1
+type:0
+balance:0
+
+该文件未被使用，对应行为12345.txt字段含义

@@ -1,8 +1,10 @@
 package gui;
 
 
+import controller.UserController;
+
 import javax.swing.*;
-import io.FileDB;
+//import io.FileDB;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -25,6 +27,10 @@ public class C1 extends TRMain {
     JPanel SexPanel;
     private JLabel SexLabel;
     private TextField SexInput;
+
+    JPanel AgePanel;
+    private JLabel AgeLabel;
+    private TextField AgeInput;
 
     JPanel HeightPanel;
     private JLabel HeightLabel;
@@ -84,6 +90,13 @@ public class C1 extends TRMain {
         SexInput = new TextField(15);
         SexPanel.add(SexInput);
         centerPanel.add(SexPanel);
+
+        AgePanel = new JPanel();
+        AgeLabel = new JLabel("Age:");
+        AgePanel.add(AgeLabel);
+        AgeInput = new TextField(15);
+        AgePanel.add(AgeInput);
+        centerPanel.add(AgePanel);
 
         HeightPanel = new JPanel();
         HeightLabel = new JLabel("Height:");
@@ -151,10 +164,36 @@ public class C1 extends TRMain {
                             JOptionPane.WARNING_MESSAGE);
                 }
                 else {
+                    UserController userController = new UserController();
+                    boolean selectedA = optionA.isSelected();
+                    boolean selectedB = optionB.isSelected();
+                    boolean selectedC = optionC.isSelected();
+                    boolean selectedD = optionD.isSelected();
+                    String res = "";
+                    if(selectedA)
+                        res = "Hit";
+                    else if(selectedB)
+                        res = "Yoga";
+                    else if(selectedC)
+                        res = "C";
+                    else if(selectedD)
+                        res = "D";
+                    else
+                        res = "";
 
-                    thisFrame.setVisible(false);
-                    thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    new C2("Welcome");
+
+                    String result = userController.register(FirstNameInput.getText(),LastNameInput.getText(),SexInput.getText(),Integer.valueOf(AgeInput.getText()) ,res, PWInput.getText());
+
+                    if(!result.equals("ERROR")) {
+                        thisFrame.setVisible(false);
+                        thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        new C2("Welcome",result);
+                    }
+                    else {
+                        System.out.println(result);
+                    }
+
+
                 }
             }
         });

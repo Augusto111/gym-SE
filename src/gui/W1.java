@@ -22,7 +22,7 @@ public class W1 extends TRMain {
 //    Price price;
 //    Inventory inventory;
 
-    public W1(String name) {
+    public W1(String name,String userid) {
         super(name);
 
         addOnss = new int[4];
@@ -47,7 +47,7 @@ public class W1 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C4("Welcome XXX");//改名字
+                new C4("Welcome XXX", userid);//改名字
             }
         });
 
@@ -56,7 +56,7 @@ public class W1 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new Pay1("Pay for a CM1");//改成Pay1
+                new Pay1("Pay for a CM1", userid);//改成Pay1
             }
         });
 

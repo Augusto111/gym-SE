@@ -1,5 +1,8 @@
 package gui;
 
+import bean.User;
+import controller.UserController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -65,9 +68,19 @@ public class C3 extends TRMain {
         nextbutton.setText("Log in");
         nextbutton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                thisFrame.setVisible(false);
-                thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C4("Welcome Xxx");
+                UserController userController = new UserController();
+                Integer res = userController.login(UserIdInput.getText(),PWInput.getText());
+                if(res == 0 || res == 1 || res == 2) {
+                    User user = userController.getUserInfo(UserIdInput.getText());
+                    thisFrame.setVisible(false);
+                    thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    new C4("Welcome " + user.getFirstname(),UserIdInput.getText());
+                }
+                else {
+                    System.out.println(res);
+                }
+
+
             }
         });
 

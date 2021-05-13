@@ -37,7 +37,7 @@ public class C8 extends TRMain {
 //    Price price;
 //    Inventory inventory;
 
-    public C8(String name) {
+    public C8(String name,String userid) {
         super(name);
 
         String[] columnNames =
@@ -113,7 +113,7 @@ public class C8 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C4("Welcome  xxx!");
+                new C4("Welcome  xxx!",userid);
             }
         });
 

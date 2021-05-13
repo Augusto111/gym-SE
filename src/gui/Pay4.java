@@ -22,7 +22,7 @@ public class Pay4 extends TRMain {
 //    Price price;
 //    Inventory inventory;
 
-    public Pay4(String name) {
+    public Pay4(String name,String userid) {
         super(name);
 
         addOnss = new int[4];
@@ -47,7 +47,7 @@ public class Pay4 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new Pay3("Pay for a PM");
+                new Pay3("Pay for a PM",userid);
             }
         });
 
@@ -56,7 +56,7 @@ public class Pay4 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new P1("Personal trainer");
+                new P1("Personal trainer",userid);
             }
         });
 

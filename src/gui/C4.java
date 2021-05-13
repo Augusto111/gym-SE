@@ -1,6 +1,9 @@
 package gui;
 
-import com.sun.javafx.scene.control.behavior.ListCellBehavior;
+//import com.sun.javafx.scene.control.behavior.ListCellBehavior;
+
+import bean.User;
+import controller.UserController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,8 +23,13 @@ public class C4 extends TRMain {
     private JButton PIButton;
 
 
-    public C4(String name) {
+    public C4(String name,String userid) {
         super(name);
+
+        UserController userController = new UserController();
+
+        User user = userController.getUserInfo(userid);
+
 
         //addOnss = new int[4];
 
@@ -55,15 +63,16 @@ public class C4 extends TRMain {
         VideoButton.setText("Video");
         VideoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                boolean pay = false;
-                if (pay != false) {
+//                boolean pay = false;
+
+                if (user.getType() != 0) {
                     thisFrame.setVisible(false);
                     thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    new C5("Course Video");
+                    new C5("Course Video",userid);
                 }else{
                     thisFrame.setVisible(false);
                     thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    new W1("sorry");
+                    new W1("sorry", userid);
                 }
 
             }
@@ -75,11 +84,11 @@ public class C4 extends TRMain {
                 if (pay == false) {
                     thisFrame.setVisible(false);
                     thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    new W2("sorry");
+                    new W2("sorry",userid);
                 }else{
                     thisFrame.setVisible(false);
                     thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    new P1("Personal Trainers");
+                    new P1("Personal Trainers",userid);
                 }
 
 
@@ -99,7 +108,7 @@ public class C4 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C7("Profile");//改成C7
+                new C7("Profile",userid);//改成C7
             }
         });
         centerbutton.setVisible(true);
@@ -108,7 +117,7 @@ public class C4 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C8("Schedule");//改成C8
+                new C8("Schedule", userid);//改成C8
             }
         });
         nextbutton.setText("New message");
@@ -116,7 +125,7 @@ public class C4 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C9("Message Box");//改成C9
+                new C9("Message Box",userid);//改成C9
             }
         });
 

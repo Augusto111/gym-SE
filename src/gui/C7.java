@@ -1,6 +1,9 @@
 package gui;
 
 
+import bean.User;
+import controller.UserController;
+
 import javax.swing.*;
 
 import java.awt.*;
@@ -50,7 +53,7 @@ public class C7 extends TRMain {
 //    Price price;
 //    Inventory inventory;
 
-    public C7(String name) {
+    public C7(String name, String userid) {
         super(name);
 
         addOnss = new int[4];
@@ -124,7 +127,7 @@ public class C7 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C4("Welcome XXX");
+                new C4("Welcome XXX",userid);
             }
         });
 
@@ -136,9 +139,47 @@ public class C7 extends TRMain {
                             JOptionPane.WARNING_MESSAGE);
                 } else {
 
-                    thisFrame.setVisible(false);
-                    thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    new C7("Profile");
+                    UserController userController = new UserController();
+
+                    boolean selectedA = optionA.isSelected();
+                    boolean selectedB = optionB.isSelected();
+                    boolean selectedC = optionC.isSelected();
+                    boolean selectedD = optionD.isSelected();
+                    String res = "";
+                    if(selectedA)
+                        res = "Hit";
+                    else if(selectedB)
+                        res = "Yoga";
+                    else if(selectedC)
+                        res = "C";
+                    else if(selectedD)
+                        res = "D";
+                    else
+                        res = "";
+
+                    User user = new User();
+                    user.setUserid(userid);
+                    user.setFirstname(FirstNameInput.getText());
+                    user.setLastname(LastNameInput.getText());
+                    user.setSex(SexInput.getText());
+                    user.setAge(Integer.valueOf(AgeInput.getText()));
+                    user.setInterested(res);
+                    user.setPassword(PWInput.getText());
+
+                    Boolean result = userController.setUserInfo(user);
+
+                    if(result) {
+                        thisFrame.setVisible(false);
+                        thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        new C7("SUCCESS!",userid);
+                    }
+                    else {
+                        thisFrame.setVisible(false);
+                        thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        new C7("FAILED!",userid);
+                    }
+
+
                 }
             }
         });

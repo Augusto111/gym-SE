@@ -32,7 +32,7 @@ public class P2 extends TRMain {
 //    Price price;
 //    Inventory inventory;
 
-    public P2(String name) {
+    public P2(String name,String userid) {
         super(name);
 
         JLabel jLabel = new JLabel("", JLabel.CENTER);
@@ -84,7 +84,7 @@ public class P2 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C5("My course videos");
+                new C5("My course videos",userid);
             }
         });
 
@@ -93,7 +93,7 @@ public class P2 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C5("Course Video");//还应该有个视频播放的界面
+                new C5("Course Video",userid);//还应该有个视频播放的界面
             }
         });
 

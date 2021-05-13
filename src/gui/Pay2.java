@@ -22,7 +22,7 @@ public class Pay2 extends TRMain {
 //    Price price;
 //    Inventory inventory;
 
-    public Pay2(String name) {
+    public Pay2(String name,String userid) {
         super(name);
 
         addOnss = new int[4];
@@ -47,7 +47,7 @@ public class Pay2 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new Pay1("Pay for a CM");
+                new Pay1("Pay for a CM",userid);
             }
         });
 
@@ -56,7 +56,7 @@ public class Pay2 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C5("Course videos");//改成C5
+                new C5("Course videos" ,userid);//改成C5
             }
         });
 

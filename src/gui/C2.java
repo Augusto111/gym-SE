@@ -22,7 +22,7 @@ public class C2 extends TRMain {
 //    Price price;
 //    Inventory inventory;
 
-    public C2(String name) {
+    public C2(String name, String userid) {
         super(name);
 
         addOnss=new int[4];
@@ -32,13 +32,13 @@ public class C2 extends TRMain {
         centerPanel.add(EmptyLabel);
 
         WelcomePanel = new JPanel();
-        WelcomeLabel = new JLabel("Welcome XXX:"+"");//加入姓名
+        WelcomeLabel = new JLabel("Welcome!"+"");//加入姓名
         WelcomePanel.add(WelcomeLabel);
         centerPanel.add(WelcomePanel);
 
 
         YourIdPanel = new JPanel();
-        YourIdLabel = new JLabel("Your ID is:"+"");//加入ID
+        YourIdLabel = new JLabel("Your ID is:"+userid);//加入ID
         YourIdPanel.add(YourIdLabel);
         centerPanel.add(YourIdPanel);
 

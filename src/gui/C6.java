@@ -32,7 +32,7 @@ public class C6 extends TRMain {
 //    Price price;
 //    Inventory inventory;
 
-    public C6(String name) {
+    public C6(String name, String userid) {
         super(name);
 
         JLabel jLabel = new JLabel("", JLabel.CENTER);
@@ -84,7 +84,7 @@ public class C6 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C5("My course videos");
+                new C5("My course videos",userid);
             }
         });
 
@@ -93,7 +93,7 @@ public class C6 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C5("Course Video");//还应该有个视频播放的界面
+                new C5("Course Video",userid);//还应该有个视频播放的界面
             }
         });
 

@@ -17,7 +17,7 @@ public class Pay1 extends TRMain {
 
 
 
-    public Pay1(String name) {
+    public Pay1(String name, String userid) {
         super(name);
 
         addOnss = new int[4];
@@ -41,7 +41,7 @@ public class Pay1 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new Pay2("");
+                new Pay2("",userid);
             }
         });
         QuarterButton.setText("Quarter  25");
@@ -49,7 +49,7 @@ public class Pay1 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new Pay2("");
+                new Pay2("",userid);
             }
         });
         AnnualButton.setText("Annual  80");
@@ -57,7 +57,7 @@ public class Pay1 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new Pay2("");
+                new Pay2("",userid);
             }
         });
 
@@ -66,7 +66,7 @@ public class Pay1 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new W1("");
+                new W1("", userid);
             }
         });
 

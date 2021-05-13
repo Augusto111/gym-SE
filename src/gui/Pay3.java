@@ -1,5 +1,8 @@
 package gui;
 
+import bean.User;
+import controller.UserController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,10 +18,12 @@ public class Pay3 extends TRMain {
     private JButton QuarterButton;
     private JButton AnnualButton;
 
+    final static UserController userController = new UserController();
 
 
-    public Pay3(String name) {
+    public Pay3(String name,String userid) {
         super(name);
+        User user = userController.getUserInfo(userid);
 
         addOnss = new int[4];
 
@@ -41,7 +46,7 @@ public class Pay3 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new Pay4("");
+                new Pay4(user.getFirstname(),userid);
             }
         });
         QuarterButton.setText("30 items  5500");
@@ -49,7 +54,7 @@ public class Pay3 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new Pay4("");
+                new Pay4(user.getFirstname(),userid);
             }
         });
         AnnualButton.setText("100 items 15000");
@@ -57,7 +62,7 @@ public class Pay3 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new Pay4("");
+                new Pay4(user.getFirstname(),userid);
             }
         });
 
@@ -66,7 +71,7 @@ public class Pay3 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new Pay3("pay");
+                new Pay4(user.getFirstname(),userid);
             }
         });
 
