@@ -18,18 +18,22 @@ public class HomePage extends TRMain {
         jLabel.setIcon(icon);
         centerPanel.setLayout(new BorderLayout());
         centerPanel.add(jLabel, BorderLayout.CENTER);
+
         prebutton.setText("Admin");
         prebutton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-//                thisFrame.setVisible(false);
-//                thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                thisFrame.setVisible(false);
+                thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                new A1("Admin Sign In");
             }
         });
+        centerbutton.setVisible(true);
         centerbutton.setText("Customer");
         centerbutton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-//                thisFrame.setVisible(false);
-//                thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                thisFrame.setVisible(false);
+                thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                new C3("Customer Sign In");
             }
         });
         nextbutton.setText("Trainer");
@@ -37,11 +41,13 @@ public class HomePage extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                new PT3("Trainer Sign In");
             }
         });
+        newbutton.setVisible(false);
 
     }
     public static void main(String[] args) {
-        HomePage a = new HomePage("健身房预约系统");
+        HomePage a = new HomePage("GYM system");
     }
 }
