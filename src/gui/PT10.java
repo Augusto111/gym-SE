@@ -50,7 +50,7 @@ public class PT10 extends TRMain {
 //    Price price;
 //    Inventory inventory;
 
-    public PT10(String name) {
+    public PT10(String name, String trainername) {
         super(name);
 
         addOnss = new int[4];
@@ -138,7 +138,7 @@ public class PT10 extends TRMain {
 
                     thisFrame.setVisible(false);
                     thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    new PT10("Profile");
+                    new PT10("Profile",trainername);
                 }
             }
         });

@@ -17,9 +17,9 @@ public class PT4 extends TRMain {
     private JButton VideoButton;
     private JButton LiveButton;
 
-
     public PT4(String name) {
         super(name);
+        //name就是trainer的名字
 
         centerPanel.setLayout(new BorderLayout());
 
@@ -54,7 +54,7 @@ public class PT4 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new PT5("My Course Video");
+                new PT5("My Course Video",name);
             }
         });
         LiveButton.setText("Live");
@@ -71,7 +71,7 @@ public class PT4 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new PT10("Profile");
+                new PT10("Profile",name);
             }
         });
         centerbutton.setVisible(true);

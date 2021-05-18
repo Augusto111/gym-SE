@@ -1,6 +1,9 @@
 package gui;
 
 
+import bean.Course_video;
+import controller.VideoCourseController;
+
 import javax.swing.*;
 
 import java.awt.*;
@@ -36,7 +39,7 @@ public class PT7 extends TRMain {
 //    Price price;
 //    Inventory inventory;
 
-    public PT7(String name) {
+    public PT7(String name, String TrainerName) {
         super(name);
 
         addOnss = new int[4];
@@ -68,6 +71,7 @@ public class PT7 extends TRMain {
         SpecialtyBoxPanel.add(optionD);
         SpecialtyPanel.add(SpecialtyBoxPanel);
         centerPanel.add(SpecialtyPanel);
+        String CourseType = "yoga";
 
 
         InfoPanel = new JPanel();
@@ -90,16 +94,25 @@ public class PT7 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new PT5("My course videos");
+                new PT5("My course videos","trainername");
             }
         });
 
         nextbutton.setText("Submit");
         nextbutton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                thisFrame.setVisible(false);
-                thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new PT5("My course videos");
+                Course_video newCourseVideo = new Course_video(NameInput.getText(),
+                        TrainerName,InfoInput.getText(),VideoInput.getText(),CourseType);
+                VideoCourseController videoCourseController = new VideoCourseController();
+                int add = videoCourseController.addCourseVideo(TrainerName,newCourseVideo);
+                if(add == 0){
+                    thisFrame.setVisible(false);
+                    thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    new PT5("My course videos",TrainerName);
+                }else{
+                    System.out.println("出现问题！重试");
+                }
+
             }
         });
 
