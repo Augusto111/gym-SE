@@ -1,5 +1,6 @@
 package controller;
 
+import bean.Course_live;
 import bean.Trainer;
 import io.TxtIO;
 
@@ -30,7 +31,7 @@ public class TrianerController {
         }
         ArrayList<String> lines = new ArrayList<String>();
         lines = txtIO.readTxt(logPath);
-        if(!password.equals(lines.get(4))){
+        if(!password.equals(lines.get(5))){
             err = 2;
             return err;
         }
@@ -53,5 +54,40 @@ public class TrianerController {
         String trainerInfo = trainer.toString();
         txtIO.writeTxt(regPath, trainerInfo);
         return 0;
+    }
+
+    /**
+     * 返回教练的详细信息
+     * @param trainerName 教练名
+     * @return 返回Trainer，null表示没有此教练信息
+     */
+    public Trainer showTrainerInfo(String trainerName){
+        String trainInfoPath = trainerFilePath + trainerName+".txt";
+        File file = new File(trainInfoPath);
+        if((!file.isFile()) || (!file.exists())){
+            return null;
+        }
+        ArrayList<String> list = new ArrayList<String>();
+        list = txtIO.readTxt(trainInfoPath);
+        Trainer trainer= new Trainer(list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5));
+        return trainer;
+    }
+
+    /**
+     * 修改教练的详细信息
+     * @param trainerName 教练名
+     * @param trainer 教练的详细信息
+     * @return err = 0 修改成功；err = 1 修改失败；
+     */
+    public int editTrainerInfo(String trainerName, Trainer trainer){
+        int err = 0;
+        String trainerPath = trainerFilePath + trainerName + ".txt";
+        File trainerFile = new File(trainerPath);
+        if(trainerFile.exists() && trainerFile.isFile()){
+            trainerFile.delete();
+        }
+        err = trainerRegister(trainer);
+
+        return err;
     }
 }

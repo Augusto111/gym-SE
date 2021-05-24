@@ -62,7 +62,7 @@ public class PT4 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new PT8("Check live course");//改成PT8
+                new PT8("Check live course", name);
             }
         });
 

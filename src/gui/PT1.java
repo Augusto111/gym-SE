@@ -120,7 +120,7 @@ public class PT1 extends TRMain {
         SpecialtyPanel.add(SpecialtyBoxPanel);
         centerPanel.add(SpecialtyPanel);
 
-        String Speciaity = "yoga";
+        String Speciaity = "Yoga";
 
         PWPanel = new JPanel();
         PWLabel = new JLabel("Password:");
@@ -169,7 +169,7 @@ public class PT1 extends TRMain {
                     if(registerResult == 0){
                         thisFrame.setVisible(false);
                         thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                        new PT2("Welcome " + TrainerName);
+                        new PT2(TrainerName);
                     }else {
                         System.out.println("!!!!!!!!!!!");
                     }

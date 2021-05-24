@@ -23,12 +23,15 @@ public class PT5 extends TRMain {
         centerPanel.setLayout(new GridLayout(3, 3));
         VideoCourseController videoCourseController = new VideoCourseController();
         ArrayList allVideoCourse = videoCourseController.getTrainerCourse(TrainerName);
-        //教练课程为空报错处理需要加
+        //教练课程为空，UI目前灭有提示用户添加课程的处理，所以先设庄
+        if(allVideoCourse == null){
 
-        for(int i = 0;i < allVideoCourse.size(); i ++){
-            String coursename = (String)allVideoCourse.get(i);
-            a = new ClassClass(TrainerName,coursename);
-            centerPanel.add(a);
+        }else{
+            for(int i = 0;i < allVideoCourse.size(); i ++){
+                String coursename = (String)allVideoCourse.get(i);
+                a = new ClassClass(TrainerName,coursename);
+                centerPanel.add(a);
+            }
         }
 
         prebutton.setText("Back");
@@ -36,7 +39,7 @@ public class PT5 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new PT4("Welcome PT " + TrainerName);
+                new PT4( TrainerName);
             }
         });
 

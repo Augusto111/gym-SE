@@ -79,7 +79,7 @@ public class Trainer implements Serializable {
 
     @Override
     public String toString() {
-        return firstName  + lastName +"\n"+ Gender + "\n" + age + "\n" + speciaity + "\n" + password;
+        return firstName  + "\n" + lastName +"\n"+ Gender + "\n" + age + "\n" + speciaity + "\n" + password;
     }
 }
 

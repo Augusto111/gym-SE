@@ -1,6 +1,11 @@
 package gui;
 
 
+import bean.Course_live;
+import bean.Course_video;
+import controller.LiveCourseController;
+import controller.VideoCourseController;
+
 import javax.swing.*;
 
 import java.awt.*;
@@ -32,7 +37,7 @@ public class PT9 extends TRMain {
 //    Price price;
 //    Inventory inventory;
 
-    public PT9(String name) {
+    public PT9(String name, String trainerName) {
         super(name);
 
         addOnss = new int[4];
@@ -76,19 +81,25 @@ public class PT9 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new PT8("Check live course");//改成PT8
+                new PT8("Check live course", trainerName);//改成PT8
             }
         });
 
         nextbutton.setText("Submit");
         nextbutton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                Course_live newCourseLive = new Course_live(NameInput.getText(),
+                        trainerName,InfoInput.getText(), "none", TimeInput.getText(), "none", "none");
+                LiveCourseController liveCourseController = new LiveCourseController();
+                int add = liveCourseController.addCourseLive(trainerName,newCourseLive);
+                if(add == 0){
                     thisFrame.setVisible(false);
                     thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    new PT8("Check live course");//改成PT8
+                    new PT8("My live videos", trainerName);
+                }else{
+                    System.out.println("出现问题！重试");
+                }
                 }
         });
-
-
     }
 }

@@ -1,11 +1,15 @@
 package gui;
 
 
+import bean.Trainer;
+import controller.TrianerController;
+
 import javax.swing.*;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class PT10 extends TRMain {
 
@@ -63,6 +67,8 @@ public class PT10 extends TRMain {
         FirstNameLabel = new JLabel("First name:");
         FirstNamePanel.add(FirstNameLabel);
         FirstNameInput = new TextField(15);
+        FirstNameInput.setBackground(Color.GRAY);
+        FirstNameInput.setEditable(false);
         FirstNamePanel.add(FirstNameInput);
         centerPanel.add(FirstNamePanel);
 
@@ -71,6 +77,8 @@ public class PT10 extends TRMain {
         LastNameLabel = new JLabel("Last name:");
         LastNamePanel.add(LastNameLabel);
         LastNameInput = new TextField(15);
+        LastNameInput.setBackground(Color.GRAY);
+        LastNameInput.setEditable(false);
         LastNamePanel.add(LastNameInput);
         centerPanel.add(LastNamePanel);
 
@@ -105,6 +113,8 @@ public class PT10 extends TRMain {
         SpecifyPanel.add(SpecifyBoxPanel);
         centerPanel.add(SpecifyPanel);
 
+        String Speciaity = "Yoga";
+
         PWPanel = new JPanel();
         PWLabel = new JLabel("Password:");
         PWPanel.add(PWLabel);
@@ -119,12 +129,35 @@ public class PT10 extends TRMain {
         PhonePanel.add(PhoneInput);
         centerPanel.add(PhonePanel);
 
+        TrianerController PT10TrainerController = new TrianerController();
+        Trainer trainer = PT10TrainerController.showTrainerInfo(trainername);
+        FirstNameInput.setText(trainer.getFirstName());
+        LastNameInput.setText(trainer.getLastName());
+        SexInput.setText(trainer.getGender());
+        AgeInput.setText(trainer.getAge());
+//        optionA.setSelected();
+        switch(trainer.getSpeciaity()){
+            case "Hit":
+                optionA.setSelected(true);
+                break;
+            case "Yoga":
+                optionB.setSelected(true);
+                break;
+            case "Shaping":
+                optionC.setSelected(true);
+                break;
+            case "D.":
+                optionD.setSelected(true);
+                break;
+        }
+        PWInput.setText(trainer.getPassword());
+
         prebutton.setText("Back");
         prebutton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new PT4("Welcome PT XXX");
+                new PT4(trainername);
             }
         });
 
@@ -135,10 +168,16 @@ public class PT10 extends TRMain {
                     JOptionPane.showMessageDialog(null, "Please input password", "ERROR",
                             JOptionPane.WARNING_MESSAGE);
                 } else {
-
+                    Trainer newTrainer = new Trainer(FirstNameInput.getText(),
+                            LastNameInput.getText(),
+                            SexInput.getText(),
+                            AgeInput.getText(),
+                            Speciaity,
+                            PWInput.getText());
+                    int err = PT10TrainerController.editTrainerInfo(trainername, newTrainer);
                     thisFrame.setVisible(false);
                     thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    new PT10("Profile",trainername);
+                    new PT4(trainername);
                 }
             }
         });

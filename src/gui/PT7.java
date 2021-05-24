@@ -2,6 +2,7 @@ package gui;
 
 
 import bean.Course_video;
+import bean.Trainer;
 import controller.VideoCourseController;
 
 import javax.swing.*;
@@ -94,7 +95,7 @@ public class PT7 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new PT5("My course videos","trainername");
+                new PT5("My course videos", TrainerName);
             }
         });
 
