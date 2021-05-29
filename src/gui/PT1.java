@@ -1,6 +1,9 @@
 package gui;
 
 
+import bean.Trainer;
+import controller.TrianerController;
+
 import javax.swing.*;
 //import io.FileDB;
 
@@ -87,18 +90,18 @@ public class PT1 extends TRMain {
         centerPanel.add(SexPanel);
 
         HeightPanel = new JPanel();
-        HeightLabel = new JLabel("Height:");
+        HeightLabel = new JLabel("Age:");
         HeightPanel.add(HeightLabel);
         HeightInput = new TextField(15);
         HeightPanel.add(HeightInput);
         centerPanel.add(HeightPanel);
 
-        WeightPanel = new JPanel();
-        WeightLabel = new JLabel("Weight:");
-        WeightPanel.add(WeightLabel);
-        WeightInput = new TextField(15);
-        WeightPanel.add(WeightInput);
-        centerPanel.add(WeightPanel);
+//        WeightPanel = new JPanel();
+//        WeightLabel = new JLabel("Weight:");
+//        WeightPanel.add(WeightLabel);
+//        WeightInput = new TextField(15);
+//        WeightPanel.add(WeightInput);
+//        centerPanel.add(WeightPanel);
 
         SpecialtyPanel = new JPanel();
         SpecialtyBoxPanel = new JPanel();
@@ -116,6 +119,8 @@ public class PT1 extends TRMain {
         SpecialtyBoxPanel.add(optionD);
         SpecialtyPanel.add(SpecialtyBoxPanel);
         centerPanel.add(SpecialtyPanel);
+
+        String Speciaity = "Yoga";
 
         PWPanel = new JPanel();
         PWLabel = new JLabel("Password:");
@@ -152,10 +157,23 @@ public class PT1 extends TRMain {
                             JOptionPane.WARNING_MESSAGE);
                 }
                 else {
+                    String TrainerName = LastNameInput.getText() + FirstNameInput.getText();
+                    Trainer newTrainer = new Trainer(FirstNameInput.getText(),
+                            LastNameInput.getText(),
+                            SexInput.getText(),
+                            HeightInput.getText(),
+                            Speciaity,
+                            PWInput.getText());
+                    TrianerController PT1TrainerController = new TrianerController();
+                    int registerResult = PT1TrainerController.trainerRegister(newTrainer);
+                    if(registerResult == 0){
+                        thisFrame.setVisible(false);
+                        thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                        new PT2(TrainerName);
+                    }else {
+                        System.out.println("!!!!!!!!!!!");
+                    }
 
-                    thisFrame.setVisible(false);
-                    thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                    new PT2("Welcome XXX");
                 }
             }
         });

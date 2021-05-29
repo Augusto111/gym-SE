@@ -11,17 +11,13 @@ public class Trainer implements Serializable {
      *
      */
 //    private static final long serialVersionUID = -5075336075423229986L;
-    private String PtID;
     private String firstName;
     private String lastName;
     private String Gender;
-    private int age;
+    private String  age;
     private String speciaity;
     private String password;
 
-    public String getPtID() {
-        return PtID;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -35,7 +31,7 @@ public class Trainer implements Serializable {
         return Gender;
     }
 
-    public int getAge() {
+    public String  getAge() {
         return age;
     }
 
@@ -47,9 +43,6 @@ public class Trainer implements Serializable {
         return password;
     }
 
-    public void setPtID(String ptID) {
-        this.PtID = ptID;
-    }
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -63,7 +56,7 @@ public class Trainer implements Serializable {
         this.Gender = gender;
     }
 
-    public void setAge(int age) {
+    public void setAge(String  age) {
         this.age = age;
     }
 
@@ -75,8 +68,7 @@ public class Trainer implements Serializable {
         this.password = password;
     }
 
-    public Trainer(String PtID, String firstName, String lastName, String Gender, int age, String speciaity, String password) {
-        this.PtID = PtID;
+    public Trainer(String firstName, String lastName, String Gender, String  age, String speciaity, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.Gender = Gender;
@@ -87,7 +79,7 @@ public class Trainer implements Serializable {
 
     @Override
     public String toString() {
-        return firstName  + lastName +"\n"+ Gender + "\n" + age + "\n" + speciaity + "\n" + password;
+        return firstName  + "\n" + lastName +"\n"+ Gender + "\n" + age + "\n" + speciaity + "\n" + password;
     }
 }
 

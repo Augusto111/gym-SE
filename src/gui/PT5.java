@@ -1,9 +1,13 @@
 package gui;
 
+import bean.Trainer;
+import controller.VideoCourseController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class PT5 extends TRMain {
     //    private Order order;
@@ -11,72 +15,31 @@ public class PT5 extends TRMain {
     int[] addOnss;
 
     JPanel FirstPanel;
-    private JButton FirstButton;
-    private JButton SecondButton;
-    private JButton ThirdButton;
-    private JButton FourthButton;
 
+    private ClassClass a;
 
-    public PT5(String name) {
+    public PT5(String name, String TrainerName) {
         super(name);
+        centerPanel.setLayout(new GridLayout(3, 3));
+        VideoCourseController videoCourseController = new VideoCourseController();
+        ArrayList allVideoCourse = videoCourseController.getTrainerCourse(TrainerName);
+        //教练课程为空，UI目前灭有提示用户添加课程的处理，所以先设庄
+        if(allVideoCourse == null){
 
-        addOnss = new int[4];
-
-        centerPanel.setLayout(new GridLayout(2, 1));
-        EmptyLabel = new JLabel("");
-        centerPanel.add(EmptyLabel);
-
-        FirstPanel = new JPanel();
-        FirstButton = new JButton();
-        SecondButton = new JButton();
-        ThirdButton = new JButton();
-        FourthButton = new JButton();
-        FirstPanel.add(FirstButton);
-        FirstPanel.add(SecondButton);
-        FirstPanel.add(ThirdButton);
-        FirstPanel.add(FourthButton);
-        centerPanel.add(FirstPanel);
-
-
-        FirstButton.setText("Yoga");
-        FirstButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                thisFrame.setVisible(false);
-                thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new PT6("Course aaa");//改成PT6
+        }else{
+            for(int i = 0;i < allVideoCourse.size(); i ++){
+                String coursename = (String)allVideoCourse.get(i);
+                a = new ClassClass(TrainerName,coursename);
+                centerPanel.add(a);
             }
-        });
-        SecondButton.setText("Fat Reduece");
-        SecondButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                thisFrame.setVisible(false);
-                thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new PT6("Course aaa");//改成PT6
-            }
-        });
-        ThirdButton.setText("。。。。。。");
-        ThirdButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                thisFrame.setVisible(false);
-                thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new PT6("Course aaa");//改成PT6
-            }
-        });
-        FourthButton.setText("。。。。。。");
-        FourthButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                thisFrame.setVisible(false);
-                thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new PT6("Course aaa");//改成PT6
-            }
-        });
+        }
 
         prebutton.setText("Back");
         prebutton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new PT4("Welcome PT XXX");
+                new PT4( TrainerName);
             }
         });
 
@@ -85,10 +48,24 @@ public class PT5 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new PT7("Publish a course video");
+                new PT7("Publish a course video",TrainerName);
             }
         });
 
+
+    }
+
+    class ClassClass extends JButton {
+        public ClassClass(String TrainerName,String coursename){
+            super(coursename);
+            this.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    thisFrame.setVisible(false);
+                    thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    new PT6(TrainerName,coursename);//看课页面
+                }
+            });
+        }
 
     }
 }

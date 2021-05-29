@@ -3,17 +3,17 @@
 //        String CourseType = "swim";
 //        String CourseInfo = "stronger!better!";
 //        String url = "http://baudi.com";
-//        videoCourse zyfvideoCourse = new videoCourse(CourseName, CourseType, CourseInfo, url);
+//        Course_video zyfvideoCourseVideo = new Course_video(CourseName, CourseType, CourseInfo, url);
 //        CourseOperate testCourseOperate = new CourseOperate();
 
-//        int test1result = testCourseOperate.addCourseVideo("zf",zyfvideoCourse);
+//        int test1result = testCourseOperate.addCourseVideo("zf",zyfvideoCourseVideo);
 //        System.out.println(test1result);
 
 //        ArrayList<String> test2list = new ArrayList<>();
 //        test2list = testCourseOperate.getTrainerCourse("zyf");
 //        System.out.println(test2list);
 
-//        videoCourse test3videoCourse = testCourseOperate.showCourseVideo("zyf","frag");
+//        Course_video test3videoCourse = testCourseOperate.showCourseVideo("zyf","frag");
 //        System.out.println(test3videoCourse);
 
 
@@ -21,9 +21,9 @@
 //        String newCourseType = "swimnew";
 //        String newCourseInfo = "new!stronger!better!";
 //        String newurl = "http://baudi.com";
-//        videoCourse newzyfvideoCourse = new videoCourse(newCourseName, newCourseType, newCourseInfo, newurl);
+//        Course_video newzyfvideoCourseVideo = new Course_video(newCourseName, newCourseType, newCourseInfo, newurl);
 //
-//        int test4 = testCourseOperate.editCourseVideo("zyf","mn",newzyfvideoCourse);
+//        int test4 = testCourseOperate.editCourseVideo("zyf","mn",newzyfvideoCourseVideo);
 //        System.out.println(test4);
 
 

@@ -1,5 +1,8 @@
 package gui;
 
+import bean.Trainer;
+import controller.TrianerController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -31,7 +34,7 @@ public class PT3 extends TRMain {
         centerPanel.add(EmptyLabel);
 
         UserIdPanel = new JPanel();
-        userIdLabel = new JLabel("User Id:");
+        userIdLabel = new JLabel("User Name:");
         UserIdPanel.add(userIdLabel);
         UserIdInput = new TextField(15);
         UserIdPanel.add(UserIdInput);
@@ -65,9 +68,20 @@ public class PT3 extends TRMain {
         nextbutton.setText("Log in");
         nextbutton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                thisFrame.setVisible(false);
-                thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new PT4("Welcome PT Xxx");
+                TrianerController PT3TrainerController = new TrianerController();
+                int LoginResult = PT3TrainerController.trainerLogin(UserIdInput.getText(),
+                        PWInput.getText());
+                if(LoginResult == 0){
+                    thisFrame.setVisible(false);
+                    thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    new PT4(UserIdInput.getText());
+                }else if(LoginResult == 1){
+                    System.out.println("用户名不存在");
+                }else{
+                    System.out.println("密码错误");
+                }
+
+
             }
         });
 
@@ -112,5 +126,7 @@ public class PT3 extends TRMain {
 //            double dishPrice = price.getDishPrice();
 //            Order1 order1 = new Order1("Fixed price \uFFE1 "+String.valueOf(price));
         }
-    }*/
+    }
+
+ */
 }

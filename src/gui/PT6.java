@@ -1,6 +1,9 @@
 package gui;
 
 
+import bean.Course_video;
+import controller.VideoCourseController;
+
 import javax.swing.*;
 
 import java.awt.*;
@@ -32,14 +35,17 @@ public class PT6 extends TRMain {
 //    Price price;
 //    Inventory inventory;
 
-    public PT6(String name) {
-        super(name);
+    public PT6(String Trainername, String Coursename) {
+        super(Coursename);
 
         JLabel jLabel = new JLabel("", JLabel.CENTER);
         Icon icon = new ImageIcon("./src/gui/2.png");
         jLabel.setIcon(icon);
         centerPanel.setLayout(new BorderLayout());
         centerPanel.add(jLabel, BorderLayout.WEST);
+
+        VideoCourseController videoCourseController = new VideoCourseController();
+        Course_video videoCourse = videoCourseController.showCourseVideo(Trainername,Coursename);
 
 
         addOnss = new int[4];
@@ -51,7 +57,7 @@ public class PT6 extends TRMain {
         NamePanel = new JPanel();
         NameLabel = new JLabel("Course name:");
         NamePanel.add(NameLabel);
-        NameInput = new TextField(15);
+        NameInput = new TextField(videoCourse.getCourseName());
         NamePanel.add(NameInput);
         allPanel.add(NamePanel);
 
@@ -59,21 +65,21 @@ public class PT6 extends TRMain {
         InfoPanel = new JPanel();
         InfoLabel = new JLabel("Course information:");
         InfoPanel.add(InfoLabel);
-        InfoInput = new TextField(15);
+        InfoInput = new TextField(videoCourse.getCourseInfo());
         InfoPanel.add(InfoInput);
         allPanel.add(InfoPanel);
 
         TimePanel = new JPanel();
-        TimeLabel = new JLabel("Course time:");
+        TimeLabel = new JLabel("Course type:");
         TimePanel.add(TimeLabel);
-        TimeInput = new TextField(15);
+        TimeInput = new TextField(videoCourse.getCourseType());
         TimePanel.add(TimeInput);
         allPanel.add(TimePanel);
 
         ImagePanel = new JPanel();
         ImageLabel = new JLabel("Pt name:");
         ImagePanel.add(ImageLabel);
-        ImageInput = new TextField(15);
+        ImageInput = new TextField(videoCourse.getTrainerName());
         ImagePanel.add(ImageInput);
         allPanel.add(ImagePanel);
 
@@ -84,7 +90,7 @@ public class PT6 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new PT5("My course videos");
+                new PT5("My course videos",Trainername);
             }
         });
 
@@ -93,10 +99,14 @@ public class PT6 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new PT6("Course aaa");//理论上 应该还有个类PT7的界面
+                new PT6(Trainername,Coursename);//理论上 应该还有个类PT7的界面
             }
         });
 
 
+    }
+
+    public PT6(String Trainername, String course_aaa, String userid) {
+        super(userid);
     }
 }
