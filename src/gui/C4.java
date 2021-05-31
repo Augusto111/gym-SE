@@ -80,8 +80,7 @@ public class C4 extends TRMain {
         LiveButton.setText("Live");
         LiveButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                boolean pay = false;
-                if (pay == false) {
+                if (user.getType() != 2) {
                     thisFrame.setVisible(false);
                     thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     new W2("sorry",userid);

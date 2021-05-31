@@ -1,6 +1,10 @@
 package gui;
 
 
+import bean.User;
+import controller.BookCourseController;
+import controller.UserController;
+
 import javax.swing.*;
 import javax.swing.table.TableColumn;
 
@@ -43,9 +47,14 @@ public class C8 extends TRMain {
         String[] columnNames =
                 { "user id", "course name", "time", "Aim","study", "cancel", "change" };
 
+        UserController userController = new UserController();
+
+        User user = userController.getUserInfo(userid);
         /*
          * 初始化JTable里面各项的值，设置两个一模一样的实体"赵匡义"学生。
          */
+        BookCourseController bookCourseController = new BookCourseController();
+        java.util.List<String> cources = bookCourseController.bookcourseList(userid);
         Object[][] obj = new Object[2][7];
         for (int i = 0; i < 2; i++)
         {
@@ -113,7 +122,7 @@ public class C8 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C4("Welcome  xxx!",userid);
+                new C4("Welcome " + user.getFirstname(),userid);
             }
         });
 

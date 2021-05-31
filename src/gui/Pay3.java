@@ -46,7 +46,7 @@ public class Pay3 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new Pay4(user.getFirstname(),userid);
+                new Pay4(user.getFirstname(),userid,"10");
             }
         });
         QuarterButton.setText("30 items  5500");
@@ -54,7 +54,7 @@ public class Pay3 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new Pay4(user.getFirstname(),userid);
+                new Pay4(user.getFirstname(),userid,"30");
             }
         });
         AnnualButton.setText("100 items 15000");
@@ -62,7 +62,7 @@ public class Pay3 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new Pay4(user.getFirstname(),userid);
+                new Pay4(user.getFirstname(),userid,"100");
             }
         });
 
@@ -71,7 +71,7 @@ public class Pay3 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new Pay4(user.getFirstname(),userid);
+                new C4(user.getFirstname(),userid);
             }
         });
 

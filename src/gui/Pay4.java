@@ -1,5 +1,8 @@
 package gui;
 
+import bean.User;
+import controller.UserController;
+
 import javax.swing.*;
 
 
@@ -22,9 +25,12 @@ public class Pay4 extends TRMain {
 //    Price price;
 //    Inventory inventory;
 
-    public Pay4(String name,String userid) {
+    final static UserController userController = new UserController();
+
+    public Pay4(String name,String userid, String courseNum) {
         super(name);
 
+        User user = userController.getUserInfo(userid);
         addOnss = new int[4];
 
         centerPanel.setLayout(new GridLayout(3, 1));
@@ -38,7 +44,7 @@ public class Pay4 extends TRMain {
 
 
         SecondPanel = new JPanel();
-        SecondLabel = new JLabel("You are paying for a" + "");//加入会员类型
+        SecondLabel = new JLabel("You are paying for premium membership and " + courseNum + "courses");//加入会员类型
         SecondPanel.add(SecondLabel);
         centerPanel.add(SecondPanel);
 
@@ -56,7 +62,13 @@ public class Pay4 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new P1("Personal trainer",userid);
+                int res = userController.purchaseCourse(Integer.parseInt(courseNum), userid);
+                if(res == -1){
+                    new C3("Customer Sign In");
+                }
+                else {
+                    new P1("Personal trainer",userid);
+                }
             }
         });
 

@@ -59,10 +59,10 @@ public class VideoCourseController {
         }
         txtIO.writeTxt(trainerPath, Course_video.getCourseName());
         String content = Course_video.getCourseName()+"\n"+
-                                Course_video.getTrainerName()+"\n" +
-                                Course_video.getCourseInfo()+"\n" +
-                                Course_video.getUrl()+"\n" +
-                                Course_video.getCourseType();
+                Course_video.getTrainerName()+"\n" +
+                Course_video.getCourseInfo()+"\n" +
+                Course_video.getUrl()+"\n" +
+                Course_video.getCourseType();
         txtIO.writeTxt(coursePath, content);
         return err;
     }

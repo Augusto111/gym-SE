@@ -1,5 +1,8 @@
 package gui;
 
+import bean.User;
+import controller.UserController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -20,6 +23,10 @@ public class C5 extends TRMain {
     public C5(String name, String userid) {
         super(name);
 
+
+        UserController userController = new UserController();
+
+        User user = userController.getUserInfo(userid);
         addOnss = new int[4];
 
         centerPanel.setLayout(new GridLayout(2, 1));
@@ -76,7 +83,7 @@ public class C5 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C4("Welcome XXX",userid);
+                new C4("Welcome " + user.getFirstname(),userid);
             }
         });
 
