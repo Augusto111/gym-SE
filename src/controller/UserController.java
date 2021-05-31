@@ -164,22 +164,19 @@ public class UserController {
      * @Author: YuBen
      * @Date: 2021-04-26
      */
-    public Boolean setUserInfo(User user){
-        String filePath = (Constant.FilePath+"/users/"+user.getUserid()+".txt");
+    public Boolean setUserInfo(User user) {
+        String filePath = (Constant.FilePath + "/users/" + user.getUserid() + ".txt");
         try {
             UserFileDB.delete(filePath);
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
-        String userDetailString=UserFileDB.userDetailString(user.getUserid(),user.getFirstname(),user.getLastname(),user.getSex(),user.getAge(),user.getInterested(),user.getPassword(),user.getTelephone(),user.getCardType(),user.getCourseBalance(),user.getType(),user.getBalance());
+        String userDetailString = UserFileDB.userDetailString(user.getUserid(), user.getFirstname(), user.getLastname(), user.getSex(), user.getAge(), user.getInterested(), user.getPassword(), user.getTelephone(), user.getCardType(), user.getCourseBalance(), user.getType(), user.getBalance());
         try {
-            TxtIO.writeTxt(filePath,userDetailString);
+            TxtIO.writeTxt(filePath, userDetailString);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
-//    public static void main(String[] args) {
-//
-//    }
 }
