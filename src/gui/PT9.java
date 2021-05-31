@@ -99,7 +99,7 @@ public class PT9 extends TRMain {
                 }else{
                     System.out.println("出现问题！重试");
                 }
-                }
+            }
         });
     }
 }

@@ -48,7 +48,7 @@ public class TRMain implements ActionListener{
         controlpaPanel.add(nextbutton);
         controlpaPanel.add(newbutton);
 
-       // buttonPanel.setLayout(new GridLayout(0,1,30,30));
+        // buttonPanel.setLayout(new GridLayout(0,1,30,30));
         thisFrame.setLayout(new BorderLayout());
         thisFrame.add("North",textLabel);
         thisFrame.add("Center",centerPanel);

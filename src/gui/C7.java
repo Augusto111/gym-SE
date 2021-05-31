@@ -58,6 +58,11 @@ public class C7 extends TRMain {
 
         addOnss = new int[4];
 
+
+        UserController userController = new UserController();
+
+        User user = userController.getUserInfo(userid);
+
         centerPanel.setLayout(new GridLayout(9, 1));
         EmptyLabel = new JLabel("");
         centerPanel.add(EmptyLabel);
@@ -66,6 +71,7 @@ public class C7 extends TRMain {
         FirstNameLabel = new JLabel("First name:");
         FirstNamePanel.add(FirstNameLabel);
         FirstNameInput = new TextField(15);
+        FirstNameInput.setText(user.getFirstname());
         FirstNamePanel.add(FirstNameInput);
         centerPanel.add(FirstNamePanel);
 
@@ -74,6 +80,7 @@ public class C7 extends TRMain {
         LastNameLabel = new JLabel("Last name:");
         LastNamePanel.add(LastNameLabel);
         LastNameInput = new TextField(15);
+        LastNameInput.setText(user.getLastname());
         LastNamePanel.add(LastNameInput);
         centerPanel.add(LastNamePanel);
 
@@ -81,6 +88,7 @@ public class C7 extends TRMain {
         SexLabel = new JLabel("Sex:");
         SexPanel.add(SexLabel);
         SexInput = new TextField(15);
+        SexInput.setText(user.getSex());
         SexPanel.add(SexInput);
         centerPanel.add(SexPanel);
 
@@ -88,6 +96,7 @@ public class C7 extends TRMain {
         AgeLabel = new JLabel("Age:");
         AgePanel.add(AgeLabel);
         AgeInput = new TextField(15);
+        AgeInput.setText(user.getAge()+"");
         AgePanel.add(AgeInput);
         centerPanel.add(AgePanel);
 
@@ -112,6 +121,7 @@ public class C7 extends TRMain {
         PWLabel = new JLabel("Password:");
         PWPanel.add(PWLabel);
         PWInput = new TextField(15);
+        PWInput.setText(user.getPassword());
         PWPanel.add(PWInput);
         centerPanel.add(PWPanel);
 
@@ -119,6 +129,7 @@ public class C7 extends TRMain {
         PhoneLabel = new JLabel("Phone:");
         PhonePanel.add(PhoneLabel);
         PhoneInput = new TextField(15);
+        PhoneInput.setText(user.getTelephone());
         PhonePanel.add(PhoneInput);
         centerPanel.add(PhonePanel);
 
@@ -127,7 +138,7 @@ public class C7 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C4("Welcome XXX",userid);
+                new C4("Welcome " + user.getFirstname(),userid);
             }
         });
 
@@ -157,7 +168,6 @@ public class C7 extends TRMain {
                     else
                         res = "";
 
-                    User user = new User();
                     user.setUserid(userid);
                     user.setFirstname(FirstNameInput.getText());
                     user.setLastname(LastNameInput.getText());

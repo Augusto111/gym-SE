@@ -12,7 +12,7 @@ import java.awt.event.ActionListener;
 
 public class C1 extends TRMain {
 
-//    private Order order;
+    //    private Order order;
     JLabel  EmptyLabel;
     int[] addOnss;
 

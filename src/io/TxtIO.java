@@ -26,7 +26,7 @@ public class TxtIO {
                 FileInputStream fileInputStream = new FileInputStream(file);
                 InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
                 BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-                 
+
                 ArrayList<String> lines = new ArrayList<String>();
                 String text = null;
                 while((text = bufferedReader.readLine()) != null){
@@ -46,12 +46,33 @@ public class TxtIO {
      * @param txtPath txt文件路径
      * @param content 需要写入的文本
      */
-    public static void writeTxt(String txtPath,String content){    
+    public static void writeTxt(String txtPath,String content){
         FileWriter fw = null;
         try {
             //如果文件存在，则追加内容；如果文件不存在，则创建文件
             File f=new File(txtPath);
             fw = new FileWriter(f, true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        PrintWriter pw = new PrintWriter(fw);
+        pw.println(content);
+        pw.flush();
+        try {
+            fw.flush();
+            pw.close();
+            fw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void updateTxt(String txtPath,String content){
+        FileWriter fw = null;
+        try {
+            //如果文件存在，则追加内容；如果文件不存在，则创建文件
+            File f=new File(txtPath);
+            fw = new FileWriter(f, false);
         } catch (IOException e) {
             e.printStackTrace();
         }

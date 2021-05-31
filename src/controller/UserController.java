@@ -83,7 +83,7 @@ public class UserController {
                 }
                 String userDetailString=UserFileDB.userDetailString(userid,user.getFirstname(),user.getLastname(),user.getSex(),user.getAge(),user.getInterested(),user.getPassword(),user.getTelephone(),user.getCardType(),user.getCourseBalance(),user.getType(),user.getBalance());
                 try {
-                    TxtIO.writeTxt(filePath,userDetailString);
+                    TxtIO.updateTxt(filePath,userDetailString);
                     return user.getType();
                 }catch (Exception e){
                     return -3;
@@ -107,25 +107,26 @@ public class UserController {
             User user = UserFileDB.readUserTxt(filePath);
             if(user == null) {
                 return -1;}
-            else if(user.getType()==0){
-                return  -2;
-            }
             else{
+                if(user.getType()==0){
+                    user.setType(2);}
                 Integer courseBalance = user.getCourseBalance();
                 courseBalance += courseNum;
                 user.setCourseBalance(courseBalance);
-                user.setType(2);
             }
             try {
                 UserFileDB.delete(filePath);
             }catch (Exception e){
+                e.printStackTrace();
                 return -3;
             }
             String userDetailString=UserFileDB.userDetailString(user.getUserid(),user.getFirstname(),user.getLastname(),user.getSex(),user.getAge(),user.getInterested(),user.getPassword(),user.getTelephone(),user.getCardType(),user.getCourseBalance(),user.getType(),user.getBalance());
             try {
-                TxtIO.writeTxt(filePath,userDetailString);
+                System.out.println(userId + "爷要买" + courseNum + "节课");
+                TxtIO.updateTxt(filePath,userDetailString);
                 return user.getCourseBalance();
             }catch (Exception e){
+                e.printStackTrace();
                 return -3;
             }
         }catch (Exception e){
@@ -173,7 +174,7 @@ public class UserController {
         }
         String userDetailString = UserFileDB.userDetailString(user.getUserid(), user.getFirstname(), user.getLastname(), user.getSex(), user.getAge(), user.getInterested(), user.getPassword(), user.getTelephone(), user.getCardType(), user.getCourseBalance(), user.getType(), user.getBalance());
         try {
-            TxtIO.writeTxt(filePath, userDetailString);
+            TxtIO.updateTxt(filePath, userDetailString);
             return true;
         } catch (Exception e) {
             return false;
