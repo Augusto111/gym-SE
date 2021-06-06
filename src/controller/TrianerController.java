@@ -90,4 +90,24 @@ public class TrianerController {
 
         return err;
     }
+
+    /**
+     * 获取所有教练名
+     * @return TrainerList
+     */
+    public ArrayList<String> getAllTrainer() {
+        File f = new File(trainerFilePath);
+        if (!f.exists()) {
+            System.out.println(trainerFilePath + " not exists");
+            return null;
+        }
+        ArrayList<String> res = new ArrayList<>();
+        File fa[] = f.listFiles();
+        for (int i = 0; i < fa.length; i++) {
+            File fs = fa[i];
+            String[] strings = fs.getName().split("\\.");
+            res.add(strings[0]);
+        }
+        return res;
+    }
 }

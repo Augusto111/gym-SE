@@ -21,16 +21,20 @@ class MyButtonRender implements TableCellRenderer {
         jPanel.add(jButton);
         this.name = name;
     }
+//    java.awt.Button[button0,0,0,0x0,invalid,label=cancel]
 
     private void initButton() {
         jButton = new JButton();
+        jButton.setText(name);
         jButton.setBounds(2, 3, 75, 10);
         jButton.addActionListener(
                 new ActionListener() {
-                    @Override
+//                    @Override
                     public void actionPerformed(ActionEvent e) {
-//                        System.out.println("" + e.getActionCommand());
-//                        System.out.println(jButton.getText());
+
+                        System.out.println("e.getActionCommand()");
+                        System.out.println(e.getActionCommand());
+                        System.out.println(jButton.getText());
                     }
                 });
     }
@@ -46,5 +50,6 @@ class MyButtonRender implements TableCellRenderer {
         jButton.setText(name);
         return jPanel;
     }
+
 }
 

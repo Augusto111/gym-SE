@@ -77,6 +77,8 @@ public class C3 extends TRMain {
                     new C4("Welcome " + user.getFirstname(),UserIdInput.getText());
                 }
                 else {
+                    JOptionPane.showMessageDialog(null, "用户名不存在或密码错误", "ERROR",
+                            JOptionPane.WARNING_MESSAGE);
                     System.out.println(res);
                 }
 

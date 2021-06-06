@@ -38,7 +38,7 @@ public class A1 extends TRMain {
         centerPanel.add(UserIdPanel);
 
         PWPanel = new JPanel();
-        PWLabel = new JLabel("Name:");
+        PWLabel = new JLabel("Password:");
         PWPanel.add(PWLabel);
         PWInput = new TextField(15);
         PWPanel.add(PWInput);
@@ -58,9 +58,18 @@ public class A1 extends TRMain {
         nextbutton.setText("Log in");
         nextbutton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                thisFrame.setVisible(false);
-                thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new A2("Administrator Page");
+                if(UserIdInput.getText().equals("admin") && PWInput.getText().equals("111"))
+                {
+                    thisFrame.setVisible(false);
+                    thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+                    new A2("Administrator Page");
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "用户名不存在或密码错误", "ERROR",
+                            JOptionPane.WARNING_MESSAGE);
+                }
+
             }
         });
 

@@ -1,5 +1,9 @@
 package gui;
 
+import bean.User;
+import controller.UserController;
+import controller.VideoCourseController;
+
 import javax.swing.*;
 
 
@@ -19,10 +23,12 @@ public class Pay2 extends TRMain {
     JPanel SecondPanel;
     private JLabel SecondLabel;
 
+    final static UserController userController = new UserController();
+
 //    Price price;
 //    Inventory inventory;
 
-    public Pay2(String name,String userid) {
+    public Pay2(String name,String userid, String type, Integer price) {
         super(name);
 
         addOnss = new int[4];
@@ -32,13 +38,13 @@ public class Pay2 extends TRMain {
         centerPanel.add(EmptyLabel);
 
         FirstPanel = new JPanel();
-        FirstLabel = new JLabel("Payment");
+        FirstLabel = new JLabel("Payment: " + price.toString());
         FirstPanel.add(FirstLabel);
         centerPanel.add(FirstPanel);
 
 
         SecondPanel = new JPanel();
-        SecondLabel = new JLabel("You are paying for a" + "");//加入会员类型
+        SecondLabel = new JLabel("You are paying for a " + type);//加入会员类型
         SecondPanel.add(SecondLabel);
         centerPanel.add(SecondPanel);
 
@@ -56,7 +62,14 @@ public class Pay2 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C5("Course videos" ,userid);//改成C5
+                User user = userController.getUserInfo(userid);
+                user.setType(1);
+                Boolean res = userController.setUserInfo(user);
+                if(res)
+                    new C5("Course videos" ,userid);//改成C5
+                else
+                    JOptionPane.showMessageDialog(null, "PAY ERROR", "ERROR",
+                            JOptionPane.WARNING_MESSAGE);
             }
         });
 

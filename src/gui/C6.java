@@ -1,6 +1,8 @@
 package gui;
 
 
+import bean.Course_video;
+
 import javax.swing.*;
 
 import java.awt.*;
@@ -32,7 +34,7 @@ public class C6 extends TRMain {
 //    Price price;
 //    Inventory inventory;
 
-    public C6(String name, String userid) {
+    public C6(String name, String userid, String trainerName, String courseName, Course_video courseVideo) {
         super(name);
 
         JLabel jLabel = new JLabel("", JLabel.CENTER);
@@ -49,7 +51,7 @@ public class C6 extends TRMain {
         allPanel.add(EmptyLabel);
 
         NamePanel = new JPanel();
-        NameLabel = new JLabel("Course name:");
+        NameLabel = new JLabel("Course name: " + courseName);
         NamePanel.add(NameLabel);
         NameInput = new JLabel("");
         NamePanel.add(NameInput);
@@ -57,21 +59,21 @@ public class C6 extends TRMain {
 
 
         InfoPanel = new JPanel();
-        InfoLabel = new JLabel("Course information:");
+        InfoLabel = new JLabel("Course information: " + courseVideo.getCourseInfo());
         InfoPanel.add(InfoLabel);
         InfoInput = new JLabel("");
         InfoPanel.add(InfoInput);
         allPanel.add(InfoPanel);
 
-        TimePanel = new JPanel();
-        TimeLabel = new JLabel("Course time:");
-        TimePanel.add(TimeLabel);
-        TimeInput = new JLabel("");
-        TimePanel.add(TimeInput);
-        allPanel.add(TimePanel);
+//        TimePanel = new JPanel();
+//        TimeLabel = new JLabel("Course time: " + courseVideo.);
+//        TimePanel.add(TimeLabel);
+//        TimeInput = new JLabel("");
+//        TimePanel.add(TimeInput);
+//        allPanel.add(TimePanel);
 
         ImagePanel = new JPanel();
-        ImageLabel = new JLabel("PT name:");
+        ImageLabel = new JLabel("PT name: " + trainerName);
         ImagePanel.add(ImageLabel);
         ImageInput =  new JLabel("");
         ImagePanel.add(ImageInput);

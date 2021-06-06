@@ -1,6 +1,10 @@
 package gui;
 
 
+import bean.Course_live;
+import bean.Course_video;
+import controller.BookCourseController;
+
 import javax.swing.*;
 
 import java.awt.*;
@@ -29,10 +33,12 @@ public class P2 extends TRMain {
     private JLabel ImageLabel;
     private JLabel ImageInput;
 
+    final static BookCourseController bookCourseController = new BookCourseController();
+
 //    Price price;
 //    Inventory inventory;
 
-    public P2(String name,String userid) {
+    public P2(String name, String userid, String trainerName, String courseName, Course_live courseLive) {
         super(name);
 
         JLabel jLabel = new JLabel("", JLabel.CENTER);
@@ -49,7 +55,7 @@ public class P2 extends TRMain {
         allPanel.add(EmptyLabel);
 
         NamePanel = new JPanel();
-        NameLabel = new JLabel("Course name:");
+        NameLabel = new JLabel("Course name: " + courseName);
         NamePanel.add(NameLabel);
         NameInput = new JLabel("");
         NamePanel.add(NameInput);
@@ -57,21 +63,21 @@ public class P2 extends TRMain {
 
 
         InfoPanel = new JPanel();
-        InfoLabel = new JLabel("Course information:");
+        InfoLabel = new JLabel("Course information: " + courseLive.getCourseInfo());
         InfoPanel.add(InfoLabel);
         InfoInput = new JLabel("");
         InfoPanel.add(InfoInput);
         allPanel.add(InfoPanel);
 
         TimePanel = new JPanel();
-        TimeLabel = new JLabel("Course time:");
+        TimeLabel = new JLabel("Course time: " + courseLive.getTime());
         TimePanel.add(TimeLabel);
         TimeInput = new JLabel("");
         TimePanel.add(TimeInput);
         allPanel.add(TimePanel);
 
         ImagePanel = new JPanel();
-        ImageLabel = new JLabel("PT name:");
+        ImageLabel = new JLabel("PT name: " + trainerName);
         ImagePanel.add(ImageLabel);
         ImageInput =  new JLabel("");
         ImagePanel.add(ImageInput);
@@ -93,7 +99,14 @@ public class P2 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C5("Course Video",userid);//还应该有个视频播放的界面
+                String res = bookCourseController.bookcourse(userid,courseName,trainerName);
+                if(res == "SUCCESS") {
+                    new P1("Personal Trainers",userid);
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "BOOK ERROR", "ERROR",
+                            JOptionPane.WARNING_MESSAGE);
+                }
             }
         });
 

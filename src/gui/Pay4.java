@@ -44,7 +44,7 @@ public class Pay4 extends TRMain {
 
 
         SecondPanel = new JPanel();
-        SecondLabel = new JLabel("You are paying for premium membership and " + courseNum + "courses");//加入会员类型
+        SecondLabel = new JLabel("You are paying for premium membership and " + courseNum + " courses");//加入会员类型
         SecondPanel.add(SecondLabel);
         centerPanel.add(SecondPanel);
 
@@ -63,8 +63,14 @@ public class Pay4 extends TRMain {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                 int res = userController.purchaseCourse(Integer.parseInt(courseNum), userid);
+                user.setType(2);
+                Boolean res1 = userController.setUserInfo(user);
                 if(res == -1){
                     new C3("Customer Sign In");
+                }
+                else if(!res1) {
+                    JOptionPane.showMessageDialog(null, "PAY ERROR", "ERROR",
+                            JOptionPane.WARNING_MESSAGE);
                 }
                 else {
                     new P1("Personal trainer",userid);

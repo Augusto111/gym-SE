@@ -1,5 +1,6 @@
 package controller;
 
+import bean.BookCourse;
 import bean.Constant;
 import io.BookCourseFileDB;
 import io.TxtIO;
@@ -18,9 +19,9 @@ public class BookCourseController {
      * @param coursename 课程名称
      * @return
      */
-    public String bookcourse(String userid,String coursename){
-        String bookcourseDetailString= BookCourseFileDB.bookCourseDetailString(userid,coursename);
-        String filePath=(Constant.FilePath+"/BookCourseRecord/"+userid+"_"+coursename+".txt");
+    public String bookcourse(String userid,String coursename, String trainerName){
+        String bookcourseDetailString= BookCourseFileDB.bookCourseDetailString(userid,coursename,trainerName);
+        String filePath=(Constant.FilePath+"/BookCourseRecord/"+userid+"_"+trainerName+"_"+coursename+".txt");
         try {
             TxtIO.writeTxt(filePath,bookcourseDetailString);
             return "SUCCESS";
@@ -34,8 +35,8 @@ public class BookCourseController {
      * @param userid
      * @return
      */
-    public ArrayList<String> bookcourseList(String userid){
-        ArrayList<String> arrayList=new ArrayList<>();
+    public ArrayList<BookCourse> bookcourseList(String userid){
+        ArrayList<BookCourse> arrayList=new ArrayList<>();
         String fileDirecPath=(Constant.FilePath+"/BookCourseRecord");
         arrayList=BookCourseFileDB.getFilebyUserid(userid,fileDirecPath);
         return arrayList;
@@ -47,8 +48,8 @@ public class BookCourseController {
      * @param coursename 课程名称
      * @return
      */
-    public String deleteBookcourse(String userid,String coursename){
-        String filePath=(Constant.FilePath+"/BookCourseRecord/"+userid+"_"+coursename+".txt");
+    public String deleteBookcourse(String userid,String coursename, String trainerName){
+        String filePath=(Constant.FilePath+"/BookCourseRecord/"+userid+"_"+trainerName+"_"+coursename+".txt");
         try {
             if(UserFileDB.delete(filePath)){
                 return "SUCCESS";

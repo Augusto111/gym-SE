@@ -76,8 +76,12 @@ public class PT3 extends TRMain {
                     thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     new PT4(UserIdInput.getText());
                 }else if(LoginResult == 1){
+                    JOptionPane.showMessageDialog(null, "用户名不存在", "ERROR",
+                            JOptionPane.WARNING_MESSAGE);
                     System.out.println("用户名不存在");
                 }else{
+                    JOptionPane.showMessageDialog(null, "密码错误", "ERROR",
+                            JOptionPane.WARNING_MESSAGE);
                     System.out.println("密码错误");
                 }
 

@@ -5,6 +5,9 @@ import bean.User;
 import io.TxtIO;
 import io.UserFileDB;
 
+import java.io.File;
+import java.util.ArrayList;
+
 /**
  *用户操作接口
  */
@@ -179,5 +182,22 @@ public class UserController {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public ArrayList<String> getAllUser() {
+        File f = new File(Constant.FilePath + "/users/");
+        if (!f.exists()) {
+            System.out.println(Constant.FilePath + "/users/" + " not exists");
+            return null;
+        }
+        ArrayList<String> res = new ArrayList<>();
+        File fa[] = f.listFiles();
+        for (int i = 0; i < fa.length; i++) {
+            File fs = fa[i];
+            String[] strings = fs.getName().split("\\.");
+            if(strings[0] != null && !strings[0].equals(""))
+            res.add(strings[0]);
+        }
+        return res;
     }
 }

@@ -178,14 +178,12 @@ public class C7 extends TRMain {
 
                     Boolean result = userController.setUserInfo(user);
 
+                    thisFrame.setVisible(false);
+                    thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                     if(result) {
-                        thisFrame.setVisible(false);
-                        thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                         new C7("SUCCESS!",userid);
                     }
                     else {
-                        thisFrame.setVisible(false);
-                        thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
                         new C7("FAILED!",userid);
                     }
 

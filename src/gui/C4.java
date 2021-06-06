@@ -3,6 +3,7 @@ package gui;
 //import com.sun.javafx.scene.control.behavior.ListCellBehavior;
 
 import bean.User;
+import controller.TrianerController;
 import controller.UserController;
 
 import javax.swing.*;
@@ -21,14 +22,17 @@ public class C4 extends TRMain {
 
     JPanel SecondPanel;
     private JButton PIButton;
+    final static UserController userController = new UserController();
+    final static TrianerController trainerController = new TrianerController();
 
 
     public C4(String name,String userid) {
         super(name);
 
-        UserController userController = new UserController();
+
 
         User user = userController.getUserInfo(userid);
+        System.out.println(trainerController.getAllTrainer());
 
 
         //addOnss = new int[4];
@@ -64,7 +68,7 @@ public class C4 extends TRMain {
         VideoButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 //                boolean pay = false;
-
+                System.out.println(user.getType());
                 if (user.getType() != 0) {
                     thisFrame.setVisible(false);
                     thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -119,14 +123,15 @@ public class C4 extends TRMain {
                 new C8("Schedule", userid);//改成C8
             }
         });
-        nextbutton.setText("New message");
-        nextbutton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                thisFrame.setVisible(false);
-                thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C9("Message Box",userid);//改成C9
-            }
-        });
+//        nextbutton.setText("New message");
+//        nextbutton.addActionListener(new ActionListener() {
+//            public void actionPerformed(ActionEvent e) {
+//                thisFrame.setVisible(false);
+//                thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+//                new C9("Message Box",userid);//改成C9
+//            }
+//        });
+        nextbutton.setVisible(false);
 
         newbutton.setVisible(true);
         newbutton.setText("Logout");
