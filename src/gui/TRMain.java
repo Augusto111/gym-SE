@@ -71,7 +71,7 @@ public class TRMain implements ActionListener{
         //如果用户单击nextbutton，执行的语句
 
         if (e.getSource() == nextbutton) {
-            textLabel.setText("next");
+            //textLabel.setText("next");
             //切换cardPanel面板中当前组件之后的一个组件
 
             //若当前组件为最后添加的组件，则显示第一个组件，即卡片组件显示是循环的。
@@ -81,7 +81,7 @@ public class TRMain implements ActionListener{
         }
 
         if (e.getSource() == prebutton) {
-            textLabel.setText("back");
+            //textLabel.setText("back");
             //切换cardPanel面板中当前组件之前的一个组件
 
             //若当前组件为第一个添加的组件，则显示最后一个组件，即卡片组件显示是循环的。
@@ -91,7 +91,7 @@ public class TRMain implements ActionListener{
         }
 
         if (e.getSource() == centerbutton) {
-            textLabel.setText("center");
+           //textLabel.setText("center");
             //切换cardPanel面板中当前组件之后的一个组件
 
             //若当前组件为最后添加的组件，则显示第一个组件，即卡片组件显示是循环的。
@@ -100,7 +100,7 @@ public class TRMain implements ActionListener{
 
         }
         if (e.getSource() == newbutton) {
-            textLabel.setText("new");
+            //textLabel.setText("new");
             //切换cardPanel面板中当前组件之后的一个组件
 
             //若当前组件为最后添加的组件，则显示第一个组件，即卡片组件显示是循环的。

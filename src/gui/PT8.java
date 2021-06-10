@@ -16,32 +16,7 @@ import java.util.ArrayList;
 
 public class PT8 extends TRMain {
 
-    //    private Order order;
-    JLabel EmptyLabel;
-    int[] addOnss;
 
-    JPanel NamePanel;
-    private JLabel NameLabel;
-    private TextField NameInput;
-
-    JPanel SpecialtyPanel;
-    private JLabel SpecialtyLabel;
-    private JPanel SpecialtyBoxPanel;
-    JCheckBox optionA;
-    JCheckBox optionB;
-    JCheckBox optionC;
-    JCheckBox optionD;
-
-    JPanel InfoPanel;
-    private JLabel InfoLabel;
-    private TextField InfoInput;
-
-    JPanel VideoPanel;
-    private JLabel VideoLabel;
-    private TextField VideoInput;
-
-//    Price price;
-//    Inventory inventory;
 
     public PT8(String name, String TrainerName) {
         super(name);
@@ -79,11 +54,11 @@ public class PT8 extends TRMain {
                             obj[i][j] = liveCourse.getAdmName();
                             break;
                         case 4:
-                            obj[i][j] = new Button("cancel");
+                            obj[i][j] = "cancel";
 
                             break;
                         case 5:
-                            obj[i][j] = new Button("change");
+                            obj[i][j] = "change";
                             break;
                     }
                 }
@@ -108,8 +83,8 @@ public class PT8 extends TRMain {
              * 设置JTable自动调整列表的状态，此处设置为关闭
              */
             table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-            table.getColumnModel().getColumn(4).setCellRenderer(new MyButtonRender("cancel"));
-            table.getColumnModel().getColumn(5).setCellRenderer(new MyButtonRender("change"));
+            table.getColumnModel().getColumn(4).setCellEditor(new PTCancel());
+            table.getColumnModel().getColumn(5).setCellEditor(new PTChange());
             /*用JScrollPane装载JTable，这样超出范围的列就可以通过滚动条来查看*/
             JScrollPane scroll = new JScrollPane(table);
             scroll.setSize(700, 550);

@@ -95,7 +95,7 @@ public class C6 extends TRMain {
             public void actionPerformed(ActionEvent e) {
                 thisFrame.setVisible(false);
                 thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                new C5("Course Video",userid);//还应该有个视频播放的界面
+                new C10("Course Video",userid);//还应该有个视频播放的界面
             }
         });
 

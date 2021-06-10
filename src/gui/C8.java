@@ -9,41 +9,13 @@ import controller.LiveCourseController;
 import controller.UserController;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class C8 extends TRMain {
 
-    //    private Order order;
-    JLabel EmptyLabel;
-    int[] addOnss;
-
-    JPanel NamePanel;
-    private JLabel NameLabel;
-    private TextField NameInput;
-
-    JPanel SpecialtyPanel;
-    private JLabel SpecialtyLabel;
-    private JPanel SpecialtyBoxPanel;
-    JCheckBox optionA;
-    JCheckBox optionB;
-    JCheckBox optionC;
-    JCheckBox optionD;
-
-    JPanel InfoPanel;
-    private JLabel InfoLabel;
-    private TextField InfoInput;
-
-    JPanel VideoPanel;
-    private JLabel VideoLabel;
-    private TextField VideoInput;
-
-//    Price price;
-//    Inventory inventory;
     final static BookCourseController bookCourseController = new BookCourseController();
     final static LiveCourseController liveCourseController = new LiveCourseController();
 
@@ -65,7 +37,9 @@ public class C8 extends TRMain {
         java.util.List<BookCourse> cources = bookCourseController.bookcourseList(userid);
         System.out.println("booked cources");
         System.out.println(cources);
+
         Object[][] obj = new Object[cources.size()][columnNames.length];
+
         if(cources != null) {
             for (int i = 0; i < cources.size(); i++)
             {
@@ -87,7 +61,10 @@ public class C8 extends TRMain {
                             obj[i][j] = courseLive.getCourseInfo();
                             break;
                         case 4:
-                            obj[i][j] = new Button("cancel");
+
+
+                            obj[i][j] = "cancel";
+
                             break;
 //                        case 5:
 //                            obj[i][j] = new Button("study");
@@ -126,14 +103,19 @@ public class C8 extends TRMain {
          * 设置JTable自动调整列表的状态，此处设置为关闭
          */
 //        table.setEditingColumn(4);
+
+
+
+
         table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-        table.getColumnModel().getColumn(4).setCellRenderer(new MyButtonRender("cancel"));
+        table.getColumnModel().getColumn(4).setCellEditor(new MemberCancel());
 //        table.getColumnModel().getColumn(5).setCellRenderer(new MyButtonRender("study"));
 //        table.getColumnModel().getColumn(6).setCellRenderer(new MyButtonRender("change"));
         /*用JScrollPane装载JTable，这样超出范围的列就可以通过滚动条来查看*/
         JScrollPane scroll = new JScrollPane(table);
         scroll.setSize(1000, 550);
         centerPanel.add(scroll);
+
 
 
         prebutton.setText("Back");

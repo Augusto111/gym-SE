@@ -62,41 +62,4 @@ public class C2 extends TRMain {
 
 
     }
-/*
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == nextbutton) {
-            textLabel.setText("111");
-//            if(Integer.parseInt(EggVal.getText())!=0 ) {
-//                //TODO dynamic set the price, not hardcode
-//                ExtraDishOption egg = new Egg(price.getEggPrice(),Integer.parseInt(EggVal.getText()));
-//                this.order.getOption().add(egg);
-//                addOnss[1]=Integer.parseInt(EggVal.getText());
-//            }
-//            if(Integer.parseInt(BamVal.getText()) !=0) {
-//                //TODO dynamic set the price, not hardcode
-//                ExtraDishOption bambooShoots = new BambooShoots(price.getBambooShootsPrice(),Integer.parseInt(BamVal.getText()));
-//                this.order.getOption().add(bambooShoots);
-//                addOnss[2]=Integer.parseInt(BamVal.getText()) ;
-//            }
-//            if(Integer.parseInt(ChashuVal.getText()) !=0 ) {
-//
-//                ExtraDishOption chashu = new Chashu(price.getChashuPrice(),Integer.parseInt(ChashuVal.getText()));
-//                this.order.getOption().add(chashu);
-//                addOnss[3]=Integer.parseInt(ChashuVal.getText());
-//            }
-
-            //thisFrame.setVisible(false);
-            //thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//            Order3 order3 = new Order3("Dining Options",order);
-
-        }
-
-        if (e.getSource() == prebutton) {
-            thisFrame.setVisible(false);
-            thisFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-//            double dishPrice = price.getDishPrice();
-//            Order1 order1 = new Order1("Fixed price \uFFE1 "+String.valueOf(price));
-        }
-    }*/
 }

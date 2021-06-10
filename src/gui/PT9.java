@@ -22,6 +22,11 @@ public class PT9 extends TRMain {
     private JLabel NameLabel;
     private TextField NameInput;
 
+    JLabel imgLabel;
+    JFileChooser chooser;
+    JButton addimg;
+    JPanel ImgPanel;
+
     JPanel InfoPanel;
     private JLabel InfoLabel;
     private TextField InfoInput;
@@ -71,8 +76,20 @@ public class PT9 extends TRMain {
         ImagePanel = new JPanel();
         ImageLabel = new JLabel("Course Image:");
         ImagePanel.add(ImageLabel);
-        ImageInput = new TextField(15);
-        ImagePanel.add(ImageInput);
+        imgLabel = new JLabel();
+        ImagePanel.add(imgLabel);
+        addimg = new JButton("add");
+        addimg.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                chooser= new JFileChooser();
+                chooser.showOpenDialog(null);
+                chooser.setMultiSelectionEnabled(false);
+                chooser.getSelectedFile();
+
+                imgLabel.setText(chooser.getSelectedFile().getAbsolutePath());
+            }
+        });
+        ImagePanel.add(addimg);
         centerPanel.add(ImagePanel);
 
 
@@ -98,6 +115,8 @@ public class PT9 extends TRMain {
                     new PT8("My live videos", trainerName);
                 }else{
                     System.out.println("出现问题！重试");
+                    JOptionPane.showMessageDialog(null, "Please retry", "wrong",
+                            JOptionPane.WARNING_MESSAGE);
                 }
             }
         });

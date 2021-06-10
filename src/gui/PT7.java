@@ -4,6 +4,7 @@ package gui;
 import bean.Course_video;
 import bean.Trainer;
 import controller.VideoCourseController;
+import javafx.scene.text.Text;
 
 import javax.swing.*;
 
@@ -13,9 +14,7 @@ import java.awt.event.ActionListener;
 
 public class PT7 extends TRMain {
 
-    //    private Order order;
     JLabel EmptyLabel;
-    int[] addOnss;
 
     JPanel NamePanel;
     private JLabel NameLabel;
@@ -31,21 +30,27 @@ public class PT7 extends TRMain {
 
     JPanel InfoPanel;
     private JLabel InfoLabel;
+    JLabel ImgLabel;
     private TextField InfoInput;
-
+    JButton add;
     JPanel VideoPanel;
+    JLabel videoInforLabel;
     private JLabel VideoLabel;
-    private TextField VideoInput;
 
-//    Price price;
-//    Inventory inventory;
+    JButton addimg;
+    JPanel ImgPanel;
+    JLabel ImgInforLabel;
+    private JLabel imgLabel;
+
+
+
+    JFileChooser chooser;
 
     public PT7(String name, String TrainerName) {
         super(name);
 
-        addOnss = new int[4];
 
-        centerPanel.setLayout(new GridLayout(5, 1));
+        centerPanel.setLayout(new GridLayout(6, 1));
         EmptyLabel = new JLabel("");
         centerPanel.add(EmptyLabel);
 
@@ -82,12 +87,48 @@ public class PT7 extends TRMain {
         InfoPanel.add(InfoInput);
         centerPanel.add(InfoPanel);
 
+
+
+
         VideoPanel = new JPanel();
-        VideoLabel = new JLabel("Course video!!!!!!这里要修改成添加视频的按钮:");
+        videoInforLabel = new JLabel("Video:");
+        VideoPanel.add(videoInforLabel);
+        VideoLabel = new JLabel();
+        add = new JButton("add");
+        add.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                chooser= new JFileChooser();
+                chooser.showOpenDialog(null);
+                chooser.setMultiSelectionEnabled(false);
+                chooser.getSelectedFile();
+                System.out.println(chooser.getSelectedFile().getAbsolutePath());
+                VideoLabel.setText(chooser.getSelectedFile().getAbsolutePath());
+            }
+        });
+
         VideoPanel.add(VideoLabel);
-        VideoInput = new TextField(15);
-        VideoPanel.add(VideoInput);
+        VideoPanel.add(add);
         centerPanel.add(VideoPanel);
+
+        ImgPanel = new JPanel();
+        ImgInforLabel = new JLabel("Video image:");
+        ImgPanel.add(ImgInforLabel);
+        ImgLabel = new JLabel();
+        addimg = new JButton("add");
+        addimg.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                chooser= new JFileChooser();
+                chooser.showOpenDialog(null);
+                chooser.setMultiSelectionEnabled(false);
+                chooser.getSelectedFile();
+
+                ImgLabel.setText(chooser.getSelectedFile().getAbsolutePath());
+            }
+        });
+
+        ImgPanel.add(ImgLabel);
+        ImgPanel.add(addimg);
+        centerPanel.add(ImgPanel);
 
 
         prebutton.setText("Back");
@@ -103,7 +144,7 @@ public class PT7 extends TRMain {
         nextbutton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Course_video newCourseVideo = new Course_video(NameInput.getText(),
-                        TrainerName,InfoInput.getText(),VideoInput.getText(),CourseType);
+                        TrainerName,InfoInput.getText(),VideoLabel.getText(),CourseType);
                 VideoCourseController videoCourseController = new VideoCourseController();
                 int add = videoCourseController.addCourseVideo(TrainerName,newCourseVideo);
                 if(add == 0){
@@ -112,6 +153,8 @@ public class PT7 extends TRMain {
                     new PT5("My course videos",TrainerName);
                 }else{
                     System.out.println("出现问题！重试");
+                    JOptionPane.showMessageDialog(null, "Please retry", "wrong",
+                            JOptionPane.WARNING_MESSAGE);
                 }
 
             }
